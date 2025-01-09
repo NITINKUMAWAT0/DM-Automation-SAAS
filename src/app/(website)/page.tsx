@@ -47,7 +47,7 @@ export default function Home() {
           <div className="container px-4 py-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-white flex items-center justify-center font-bold">
+                <div className="h-8 w-8 rounded-lg bg-white text-black flex items-center justify-center font-bold">
                   Dm
                 </div>
                 <span className="text-xl font-semibold text-primary-foreground">
