@@ -1,34 +1,50 @@
-import React from 'react'
+// import {
+//   dehydrate,
+//   HydrationBoundary,
+//   QueryClient,
+// } from '@tanstack/react-query'
+import InfoBar from '@/components/global/infobar'
 import Sidebar from '@/components/global/sidebar'
-import Infobar from "@/components/global/infobar"
+import React from 'react'
+// import {
+//   PrefetchUserAutnomations,
+//   PrefetchUserProfile,
+// } from '@/react-query/prefetch'
 
 type Props = {
-    children:React.ReactNode
-    params:{slug:string}
+  children: React.ReactNode
+  params: { slug: string }
 }
 
-const layout = ({children, params}: Props) => {
+const Layout = async ({ children, params }: Props) => {
 
-    //Query
+
+  // const query = new QueryClient()
+
+  // await PrefetchUserProfile(query)
+
+  // await PrefetchUserAutnomations(query)
 
   return (
-    <div className='p-3'>
-    {/* sidebar */}
-<Sidebar slug={params.slug}/>
-    {/* navbar */}
-    <div    className="
+    // <HydrationBoundary state={dehydrate(query)}>
+      <div className="p-3">
+        <Sidebar slug={params.slug} />
+        <div
+          className="
       lg:ml-[250px] 
       lg:pl-10 
       lg:py-5 
       flex 
       flex-col 
       overflow-auto
-      ">
-   <Infobar slug={params.slug} />
-   {children}
-    </div>
-    </div>
+      "
+        >
+          <InfoBar slug={params.slug} />
+          {children}
+        </div>
+      </div>
+    // </HydrationBoundary>
   )
 }
 
-export default layout
+export default Layout

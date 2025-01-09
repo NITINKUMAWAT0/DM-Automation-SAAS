@@ -10,20 +10,20 @@ type Props = {
 
 const Items = ({ page, slug }: Props) => {
   return SIDEBAR_MENU.map((item) => (
-    <Link
-      key={item.id}
-      href={`/dashboard/${slug}/${item.label === 'home' ? '/' : item.label}`}
-      className={cn(
-        'capitalize flex gap-x-2 rounded-full p-3',
-        page === item.label && 'bg-[#0f0f0f]',
-        page === slug && item.label === 'home'
-          ? 'bg-[#0f0f0f]'
-          : 'text-[#9B9CA0]'
-      )}
-    >
-      {item.icon}
-      {item.label}
-    </Link>
+<Link
+  key={item.id}
+  href={item.label === 'home' ? `/dashboard/${slug}` : `/dashboard/${slug}/${item.label}`}
+  className={cn(
+    'capitalize flex gap-x-2 rounded-full p-3',
+    page === item.label && 'bg-[#0f0f0f] text-white',
+    page === slug && item.label === 'home'
+      ? 'bg-[#0f0f0f] text-white'
+      : 'text-[#9B9CA0]'
+  )}
+>
+  {item.icon}
+  {item.label}
+</Link>
   ))
 }
 
