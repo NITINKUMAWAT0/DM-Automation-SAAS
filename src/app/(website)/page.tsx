@@ -50,7 +50,7 @@ export default function Home() {
                 <div className="h-8 w-8 rounded-lg bg-white text-black flex items-center justify-center font-bold">
                   Dm
                 </div>
-                <span className="text-xl font-semibold text-primary-foreground">
+                <span className="text-xl font-semibold text-white">
                  Automation
                 </span>
               </div>
