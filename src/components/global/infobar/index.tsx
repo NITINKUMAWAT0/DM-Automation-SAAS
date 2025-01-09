@@ -13,9 +13,9 @@ import { HelpDuoToneWhite } from '@/icons'
 import UpgradeCard from '../sidebar/upgrade'
 import Logo from '@/logo/logo'
 import CreateAutomation from "../create-automation"
-// import Search from './search'
-// import { Notifications } from './notifications'
-// import MainBreadCrumb from '../bread-crumbs/main-bread-crumb'
+import Search from "./search"
+import { Notifications  } from './notifications'
+import MainBreadCrumb from '../main-bread-crumb'
 
 type Props = {
   slug: string
@@ -69,14 +69,14 @@ const InfoBar = ({ slug }: Props) => {
               </div>
             </Sheet>
           </span>
-          {/* <Search /> */}
+          <Search />
           <CreateAutomation />
-          {/* <Notifications /> */}
+          <Notifications />
         </div>
-        {/* <MainBreadCrumb
+        <MainBreadCrumb
           page={page === slug ? 'Home' : page}
           slug={slug}
-        /> */}
+        />
       </div>
     )
   )
