@@ -1,16 +1,17 @@
-import React from 'react'
+import { onBoardUser } from '@/actions/user';
+import { redirect } from 'next/navigation';
 
-type Props = {}
+const Page = async () => {
+  const user = await onBoardUser();
 
-const page = (props: Props) => {
+  if (user.status === 200 || user.status === 201) {
+    redirect(`/dashboard/${user.data?.firstname}${user.data?.lastname}`);
+  } else {
+    redirect('/sign-in');
+  }
 
-//Server Action Onboard the user
-//200 || 201 dash
+  // This is only here as a fallback; the component will redirect before rendering.
+  return null;
+};
 
-  return (
-    <div className='h-screen flex justify-center items-center'>
-      <h1>Dashboard</h1>
-    </div>
-  )
-}
- export default page;
+export default Page;
