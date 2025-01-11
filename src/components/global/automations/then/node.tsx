@@ -1,4 +1,3 @@
-
 'use client'
 import { Separator } from '@/components/ui/separator'
 import { useQueryAutomation } from '@/hooks/user-queries'
@@ -12,11 +11,11 @@ type Props = {
 
 const ThenNode = ({ id }: Props) => {
   const { data } = useQueryAutomation(id)
-  const commentTrigger = data?.data?.trigger.find((t) => t.type === 'COMMENT')
+  const commentTrigger = data?.data?.trigger?.find((t) => t.type === 'COMMENT')
 
-  return !data?.data?.listener ? (
-    <></>
-  ) : (
+  if (!data?.data?.listener) return null;
+
+  return (
     <div className="w-full lg:w-10/12 relative xl:w-6/12 p-5 rounded-xl flex flex-col bg-[#1D1D1D] gap-y-3">
       <div className="absolute h-20 left-1/2 bottom-full flex flex-col items-center z-50">
         <span className="h-[9px] w-[9px] bg-connector/10 rounded-full" />
@@ -28,7 +27,7 @@ const ThenNode = ({ id }: Props) => {
       </div>
       <div className="flex gap-x-2">
         <Warning />
-        Then...
+        <span>Then...</span>
       </div>
       <div className="bg-background-80 p-3 rounded-xl flex flex-col gap-y-2">
         <div className="flex gap-x-2 items-center">
@@ -37,25 +36,21 @@ const ThenNode = ({ id }: Props) => {
           ) : (
             <SmartAi />
           )}
-          <p className=" text-lg">
+          <p className="text-lg">
             {data.data.listener.listener === 'MESSAGE'
               ? 'Send the user a message.'
               : 'Let Smart AI take over'}
           </p>
         </div>
-        <p className="flont-light text-text-secondary">
+        <p className="font-light text-text-secondary">
           {data.data.listener.prompt}
         </p>
       </div>
-      {data.data.posts.length > 0 ? (
-        <></>
-      ) : commentTrigger ? (
+      {data.data.posts?.length > 0 ? null : commentTrigger ? (
         <PostButton id={id} />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   )
 }
 
-export default ThenNode
+export default ThenNode;

@@ -1,11 +1,12 @@
 'use client'
 import { useQueryAutomation } from '@/hooks/user-queries'
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import ActiveTrigger from './active'
 import { Separator } from '@/components/ui/separator'
 import ThenAction from '../then/then-action'
 import TriggerButton from '../trigger-button'
-// import { AUTOMATION_TRIGGERS } from '@/constants/automation'
+import { AUTOMATION_TRIGGERS } from '@/constants/automation'
 import { useTriggers } from '@/hooks/use-automation'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -19,6 +20,13 @@ type Props = {
 const Trigger = ({ id }: Props) => {
   const { types, onSetTrigger, onSaveTrigger, isPending } = useTriggers(id)
   const { data } = useQueryAutomation(id)
+  const router = useRouter();
+
+  const handleCreateTrigger = async () => {
+    if (types?.length === 0) return;
+    await onSaveTrigger();
+    router.push('http://localhost:3000/dashboard/NitinKumawat/automations/');
+  };
 
   if (data?.data && data?.data?.trigger.length > 0) {
     return (
@@ -53,7 +61,7 @@ const Trigger = ({ id }: Props) => {
   return (
     <TriggerButton label="Add Trigger">
       <div className="flex flex-col gap-y-2">
-        {/* {AUTOMATION_TRIGGERS.map((trigger) => (
+        {AUTOMATION_TRIGGERS.map((trigger) => (
           <div
             key={trigger.id}
             onClick={() => onSetTrigger(trigger.type)}
@@ -70,10 +78,10 @@ const Trigger = ({ id }: Props) => {
             </div>
             <p className="text-sm font-light">{trigger.description}</p>
           </div>
-        ))} */}
+        ))}
         <Keywords id={id} />
         <Button
-          onClick={onSaveTrigger}
+          onClick={handleCreateTrigger}
           disabled={types?.length === 0}
           className="bg-gradient-to-br from-[#3352CC] font-medium text-white to-[#1C2D70]"
         >
@@ -84,4 +92,4 @@ const Trigger = ({ id }: Props) => {
   )
 }
 
-export default Trigger
+export default Trigger;

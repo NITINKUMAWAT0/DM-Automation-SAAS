@@ -21,9 +21,14 @@ const ThenAction = ({ id }: Props) => {
     isPending,
   } = useListener(id);
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    await onFormSubmit();
+  };
+
   return (
     <TriggerButton label="Then">
-      <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col gap-y-4">
         {AUTOMATION_LISTENERS.map((listener) => (
           <div
             key={listener.id}
@@ -34,37 +39,46 @@ const ThenAction = ({ id }: Props) => {
                 : 'bg-background-80',
               'p-3 rounded-xl flex flex-col gap-y-2 cursor-pointer hover:opacity-80 transition duration-100'
             )}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && onSetListener(listener.type)}
           >
             <div className="flex gap-x-2 items-center">
               {listener.icon}
-              <p>{listener.label}</p>
+              <p className="font-medium">{listener.label}</p>
             </div>
-            <p>{listener.description}</p>
+            <p className="text-sm text-text-secondary">{listener.description}</p>
           </div>
         ))}
 
-        <form
-          onSubmit={onFormSubmit}
-          className="flex flex-col gap-y-2"
-        >
-          <Textarea
-            placeholder={
-              Listener === 'SMARTAI'
-                ? 'Add a prompt that your smart AI can use...'
-                : 'Add a message you want to send to your customers'
-            }
-            {...register('prompt')}
-            className="bg-background-80 outline-none border-none ring-0 focus:ring-0"
-          />
-          <Input
-            {...register('reply')}
-            placeholder="Add a reply for comments (Optional)"
-            className="bg-background-80 outline-none border-none ring-0 focus:ring-0"
-          />
-          <Button className="bg-gradient-to-br w-full from-[#3352CC] font-medium text-white to-[#1C2D70]">
-            <Loader state={isPending}>Add listener</Loader>
-          </Button>
-        </form>
+        {Listener && (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-y-3"
+          >
+            <Textarea
+              placeholder={
+                Listener === 'SMARTAI'
+                  ? 'Add a prompt for your smart AI to use...'
+                  : 'Add a message you want to send to your customers'
+              }
+              {...register('prompt')}
+              className="bg-background-80 outline-none border-none ring-0 focus:ring-0 p-3 rounded-md"
+            />
+            <Input
+              {...register('reply')}
+              placeholder="Add a reply for comments (Optional)"
+              className="bg-background-80 outline-none border-none ring-0 focus:ring-0 p-3 rounded-md"
+            />
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="bg-gradient-to-br from-[#3352CC] to-[#1C2D70] text-white font-medium w-full py-2 rounded-md"
+            >
+              <Loader state={isPending}>Add Listener</Loader>
+            </Button>
+          </form>
+        )}
       </div>
     </TriggerButton>
   );

@@ -1,12 +1,12 @@
-import React from 'react'
-import { Divide } from 'lucide-react'
-import { BlueAddIcon } from '@/icons'
+import React from 'react';
+import { Divide } from 'lucide-react';
+import { BlueAddIcon } from '@/icons';
 import PopOver from '../../popover/index';
 
 type Props = {
-  children: React.ReactNode
-  label: string
-}
+  children: React.ReactNode;
+  label: string;
+};
 
 const TriggerButton = ({ children, label }: Props) => {
   return (
@@ -21,7 +21,7 @@ const TriggerButton = ({ children, label }: Props) => {
     >
       {children}
     </PopOver>
-  )
-}
+  );
+};
 
-export default TriggerButton
+export default TriggerButton;
