@@ -2,7 +2,7 @@ import { useAutomationPosts } from '@/hooks/use-automation'
 import { useQueryAutomationPosts } from '@/hooks/user-queries'
 import React from 'react'
 import TriggerButton from '../trigger-button'
-// import { InstagramPostProps } from '@types'
+import { InstagramPostProps } from '@/types/posts.type'
 import { CheckCircle } from 'lucide-react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -30,7 +30,7 @@ const PostButton = ({ id }: Props) => {
                   onSelectPost({
                     postid: post.id,
                     media: post.media_url,
-                    mediaType: post.media_type,
+                    mediaType:post.media_type,
                     caption: post.caption,
                   })
                 }

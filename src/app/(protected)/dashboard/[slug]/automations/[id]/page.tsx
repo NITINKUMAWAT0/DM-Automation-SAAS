@@ -1,3 +1,4 @@
+import PostNode from '@/components/global/automations/post/node'
 import ThenNode from '@/components/global/automations/then/node'
 import Trigger from '@/components/global/automations/trigger'
 import AutomationBreadCrumb from '@/components/global/main-bread-crumb/automations'
@@ -20,6 +21,7 @@ const Page = ({ params }: Props) => {
       <Trigger id={params.id}/>
       </div>
       <ThenNode id={params.id}/>
+      <PostNode id={params.id}/>
     </div>
   )
 }
