@@ -1,3 +1,4 @@
+import ThenNode from '@/components/global/automations/then/node'
 import Trigger from '@/components/global/automations/trigger'
 import AutomationBreadCrumb from '@/components/global/main-bread-crumb/automations'
 import { Warning } from '@/icons'
@@ -18,6 +19,7 @@ const Page = ({ params }: Props) => {
       </div>
       <Trigger id={params.id}/>
       </div>
+      <ThenNode id={params.id}/>
     </div>
   )
 }
