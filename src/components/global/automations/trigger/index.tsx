@@ -25,7 +25,6 @@ const Trigger = ({ id }: Props) => {
   const handleCreateTrigger = async () => {
     if (types?.length === 0) return;
     await onSaveTrigger();
-    router.push('http://localhost:3000/dashboard/NitinKumawat/automations/');
   };
 
   if (data?.data && data?.data?.trigger.length > 0) {
