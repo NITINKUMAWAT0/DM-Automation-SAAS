@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -48,10 +47,10 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="h-8 w-8 rounded-lg bg-white text-black flex items-center justify-center font-bold">
-                  Dm
+                  DM
                 </div>
-                <span className="text-xl font-semibold text-white">
-                 Automation
+                <span className="text-xl font-semibold text-white text-primary-foreground">
+                  Automation
                 </span>
               </div>
               <nav className="hidden space-x-6 text-sm text-blue-200 md:block">
@@ -59,18 +58,18 @@ export default function Home() {
                 <Link href="#pricing">Pricing</Link>
                 <Link href="#about">About</Link>
               </nav>
-              <Button className="bg-white text-primary">
+              <Button className="bg-white text-primary text-black">
                 <Link href="/dashboard">Login</Link>
               </Button>
             </div>
 
             <div className="mx-auto mt-16 max-w-3xl text-center">
               <h1 className="text-4xl font-bold leading-tight tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Transform Your Instagram Engagement with DMA
+                Transform Your Instagram Engagement with Slide
               </h1>
 
               <p className="mt-6 text-lg text-blue-200">
-                DMA revolutionizes how you connect with your audience on
+                Slide revolutionizes how you connect with your audience on
                 Instagram. Automate responses and boost engagement effortlessly,
                 turning interactions into valuable business opportunities.
               </p>
@@ -91,6 +90,14 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+            {/* <div className="relative h-40 md:h-80 w-full  mt-10">
+              <Image
+                src="/Ig-creators.png"
+                alt="Community member"
+                fill
+                className="object-cover"
+              />
+            </div> */}
           </div>
         </div>
       </section>

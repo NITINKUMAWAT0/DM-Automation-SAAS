@@ -1,4 +1,3 @@
-
 import { findAutomation } from '@/actions/automations/queries'
 import {
   createChatHistory,
@@ -9,7 +8,7 @@ import {
   trackResponses,
 } from '@/actions/webhook/queries'
 import { sendDM, sendPrivateMessage } from '@/lib/fetch'
-import { openai } from "@/lib/openai"
+import { openai } from '@/lib/openai'
 import { client } from '@/lib/prisma'
 import { NextRequest, NextResponse } from 'next/server'
 
