@@ -1,4 +1,3 @@
-
 'use server'
 
 import { onCurrentUser } from '../user'
@@ -13,7 +12,7 @@ import {
   findAutomation,
   getAutomations,
   updateAutomation,
-} from "./queries"
+} from './queries'
 
 export const createAutomations = async (id?: string) => {
   const user = await onCurrentUser()
