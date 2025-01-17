@@ -8,12 +8,11 @@ import axios from 'axios'
 
 export const onOAuthInstagram = async (strategy: 'INSTAGRAM' | 'CRM') => {
   if (strategy === 'INSTAGRAM') {
-    redirect(process.env.INSTAGRAM_EMBEDDED_OAUTH_URL as string);
+    return redirect(process.env.INSTAGRAM_EMBEDDED_OAUTH_URL as string);
   } else {
     throw new Error('Unsupported strategy');
   }
 };
-
 
 export const onIntegrate = async (code: string) => {
   const user = await onCurrentUser()
