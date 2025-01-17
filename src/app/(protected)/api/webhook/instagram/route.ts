@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
 
     if (matcher && matcher.automationId) {
       console.log('Matched')
-      // We have a keyword matcher
 
       if (webhook_payload.entry[0].messaging) {
         const automation = await getKeywordAutomation(
