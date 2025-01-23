@@ -2,14 +2,15 @@ import { onIntegrate } from '@/actions/integrations';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
-// Type definition for the props
-type Props = {
-  searchParams: { code?: string }; // `code` is optional to handle cases where it might be missing
+// Type definition for props
+type PageProps = {
+  searchParams?: Record<string, string | string[]>; // Updated to match Next.js expectations
 };
 
 // Async Server Component
-const Page = async ({ searchParams }: Props) => {
-  const code = searchParams?.code; // Safely access `code`
+const Page = async ({ searchParams }: PageProps) => {
+  // Safely extract the `code` parameter
+  const code = typeof searchParams?.code === 'string' ? searchParams.code : undefined;
 
   if (code) {
     try {
@@ -28,15 +29,14 @@ const Page = async ({ searchParams }: Props) => {
       }
     } catch (error) {
       console.error('Integration failed:', error);
-      // Optionally, redirect to an error page or handle error UI
-      redirect('/error');
+      redirect('/error'); // Redirect to an error page
       return null;
     }
   }
 
   // Redirect to sign-up if `code` is missing or integration fails
   redirect('/sign-up');
-  return null; // Ensure no content is rendered after redirection
+  return null;
 };
 
 export default Page;
